@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:padding="@dimen/define_dimen_2"
+        android:layout_margin="@dimen/define_dimen_10"
+        android:background="@drawable/custom_background_edt_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edt_search_movie"
+            android:hint="@string/hint"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/img_search"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/text_size_small"
+            android:padding="@dimen/define_dimen_12"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="Autofill"/>
+
+        <ImageView
+            android:id="@+id/img_search"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:padding="@dimen/define_dimen_10"
+            android:src="@drawable/ic_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="ContentDescription"/>
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_movie"
+        android:layout_marginStart="@dimen/define_dimen_10"
+        android:layout_marginBottom="@dimen/define_dimen_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
