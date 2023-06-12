@@ -4,4 +4,5 @@
     <string name="nav_favorite">Favorite</string>
     <string name="nav_history">History</string>
     <string name="hint">Name...</string>
+    <string name="splash_text">The product is programmed and developed by DuyDV</string>
 </resources>

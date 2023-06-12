@@ -10,6 +10,7 @@
     tools:ignore="ContentDescription">
 
     <LinearLayout
+        android:id="@+id/item_movie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -38,12 +39,12 @@
         <TextView
             android:id="@+id/txt_movie_name"
             android:text="@string/app_name"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:layout_margin="@dimen/define_dimen_8"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/define_dimen_14"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="@dimen/define_dimen_35"/>
 
     </LinearLayout>
 

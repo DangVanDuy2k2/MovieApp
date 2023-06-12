@@ -20,10 +20,16 @@ import java.util.List;
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
     private List<Movie> mListMovie;
     private Activity mActivity;
+    private IOnClickListener mIOnClickListener;
 
-    public MovieAdapter(List<Movie> mListMovie, Activity mActivity) {
+    public interface IOnClickListener{
+        void onClickFavorite(Movie movie);
+    }
+
+    public MovieAdapter(List<Movie> mListMovie, Activity mActivity, IOnClickListener mIOnClickListener) {
         this.mListMovie = mListMovie;
         this.mActivity = mActivity;
+        this.mIOnClickListener = mIOnClickListener;
     }
 
     @NonNull
@@ -43,6 +49,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         holder.txt_movie_name.setText(movie.getTitle());
 
         if(movie.getImage() != null && !movie.getImage().equals("")){
+            //Glide thu vien tai anh
             Glide.with(mActivity).load(movie.getImage()).error(R.drawable.ic_no_image).into(holder.img_movie);
         }else {
             holder.img_movie.setImageResource(R.drawable.ic_no_image);
@@ -53,6 +60,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         }else{
             holder.img_ic_favorite.setImageResource(R.drawable.ic_favorite_off);
         }
+
+        holder.img_ic_favorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mIOnClickListener.onClickFavorite(movie);
+            }
+        });
     }
 
     @Override

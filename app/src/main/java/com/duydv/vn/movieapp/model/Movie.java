@@ -1,11 +1,13 @@
 package com.duydv.vn.movieapp.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Movie {
     private int id;
     private String title;
     private String image;
     private String url;
-
     private boolean favorite;
 
     public Movie() {
@@ -49,5 +51,12 @@ public class Movie {
 
     public void setFavorite(boolean favorite) {
         this.favorite = favorite;
+    }
+
+    public Map<String, Object> toMap(){
+        Map<String,Object> map = new HashMap<>();
+        map.put("favorite", !favorite);
+
+        return map;
     }
 }
