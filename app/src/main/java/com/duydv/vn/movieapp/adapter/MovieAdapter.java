@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     public interface IOnClickListener{
         void onClickFavorite(Movie movie);
+        void onClickMovie(Movie movie);
     }
 
     public MovieAdapter(List<Movie> mListMovie, Activity mActivity, IOnClickListener mIOnClickListener) {
@@ -67,6 +69,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                 mIOnClickListener.onClickFavorite(movie);
             }
         });
+
+        holder.item_movie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mIOnClickListener.onClickMovie(movie);
+            }
+        });
     }
 
     @Override
@@ -80,6 +89,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     public class MovieViewHolder extends RecyclerView.ViewHolder{
         private ImageView img_movie,img_ic_favorite;
         private TextView txt_movie_name;
+        private LinearLayout item_movie;
 
         public MovieViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -87,6 +97,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             img_movie = itemView.findViewById(R.id.img_movie);
             img_ic_favorite = itemView.findViewById(R.id.img_ic_favorite);
             txt_movie_name = itemView.findViewById(R.id.txt_movie_name);
+            item_movie = itemView.findViewById(R.id.item_movie);
         }
     }
 }

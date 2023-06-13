@@ -1,14 +1,16 @@
 package com.duydv.vn.movieapp.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Movie {
+public class Movie implements Serializable {
     private int id;
     private String title;
     private String image;
     private String url;
     private boolean favorite;
+    private boolean history;
 
     public Movie() {
     }
@@ -51,6 +53,14 @@ public class Movie {
 
     public void setFavorite(boolean favorite) {
         this.favorite = favorite;
+    }
+
+    public boolean isHistory() {
+        return history;
+    }
+
+    public void setHistory(boolean history) {
+        this.history = history;
     }
 
     public Map<String, Object> toMap(){

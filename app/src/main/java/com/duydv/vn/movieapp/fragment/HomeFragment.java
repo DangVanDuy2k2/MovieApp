@@ -1,5 +1,6 @@
 package com.duydv.vn.movieapp.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.duydv.vn.movieapp.R;
+import com.duydv.vn.movieapp.activity.PlayMovieActivity;
 import com.duydv.vn.movieapp.adapter.MovieAdapter;
 import com.duydv.vn.movieapp.model.Movie;
 import com.duydv.vn.movieapp.utils.Utils;
@@ -51,6 +53,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClickFavorite(Movie movie) {
                 updateFavoriteMovie(movie);
+            }
+
+            @Override
+            public void onClickMovie(Movie movie) {
+                clickItemMovie(movie);
             }
         });
         rcv_movie.setAdapter(mMovieAdapter);
@@ -129,7 +136,17 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
+                Movie movie = snapshot.getValue(Movie.class);
+                if (movie == null || mListMovie == null || mListMovie.isEmpty() || mMovieAdapter == null) {
+                    return;
+                }
+                for (Movie movieDelete : mListMovie) {
+                    if (movie.getId() == movieDelete.getId()) {
+                        mListMovie.remove(movieDelete);
+                        break;
+                    }
+                }
+                mMovieAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -159,5 +176,13 @@ public class HomeFragment extends Fragment {
         mListMovie.clear();
         getListMovie(key);
         Utils.hideSoftKeyboard(getActivity());
+    }
+
+    private void clickItemMovie(Movie movie){
+        Intent intent = new Intent(getActivity(), PlayMovieActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object_movie",movie);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

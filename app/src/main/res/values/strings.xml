@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Movie Webview Basic App</string>
+    <string name="app_name">Movie App</string>
     <string name="nav_home">Home</string>
     <string name="nav_favorite">Favorite</string>
     <string name="nav_history">History</string>
